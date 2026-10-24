@@ -29,9 +29,13 @@ meter, and a host-side logger that writes CSV.
   board and J1, see
   [SoundCertified's teardown](https://soundcertified.com/how-to-modify-kill-a-watt-meter-low-voltage/).
 - A 5 V ↔ 3.3 V level shifter (and, really, an isolator — see above).
-- Raspberry Pi Pico (RP2040), MicroPython 1.29:
-  - **GP17 → meter RX** (Pico transmits)
-  - **GP18 ← meter TX** (meter answers)
+- Raspberry Pi Pico (RP2040), MicroPython 1.29.
+
+| J1 pin | meter side | Pico (through the level shifter) |
+| --- | --- | --- |
+| 1 (marked on the board) | RX — commands in | **GP17** (Pico TX) |
+| 2 | TX — replies out | **GP18** (Pico RX) |
+| 3 | GND | GND |
 
   Any two adjacent pins work; change `TX_PIN` / `RX_PIN` in `pico/kaw.py`.
   (`pico/la.py`, the logic analyzer, assumes GP17/GP18.)
@@ -155,6 +159,9 @@ which gave me the idea and has photos of the board. His mod — running the mete
 DC supply so it can measure low-voltage signals like amplifier output — is another fun
 project for this meter, and pairs well with this one: with no mains on the board, J1 is
 safe to wire up.
+
+And to Claude (Anthropic's Claude Code), which did the probing, the protocol decoding
+and most of the code here while I wired things up and watched the display.
 
 ## License
 
