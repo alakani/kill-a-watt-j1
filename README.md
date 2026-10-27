@@ -53,8 +53,12 @@ meter, and a host-side logger that writes CSV.
 Reply: `H D D D D LF`
 
 - `H`, header: low nibble = the command's low nibble; high nibble = decimal places as
-  shown on the LCD: `0x3_` → one, `0x5_` → two. Other codes are expected once a value
-  outgrows four digits (≥ 1000 W, ≥ 100 kWh, clock past 99:59) — not seen yet.
+  shown on the LCD: `0x1_` → none, `0x3_` → one, `0x5_` → two. The places follow the
+  display, so one reading can change header as its value grows: **watts drop their
+  decimal at 100 W** (88.6 W is `33 20 28 28 26`, 186 W is `13 20 21 28 26`). A decoder
+  that only knows `0x3_` and `0x5_` loses the watts at the first 100 W load. Other codes
+  may turn up for values that outgrow four digits (≥ 100 kWh, clock past 99:59) — not
+  seen yet.
 - `D`, four digits, most significant first, each **`0x20` + digit** (`' '` = 0, `'!'` = 1,
   … `')'` = 9).
 
@@ -62,7 +66,8 @@ Reply: `H D D D D LF`
 | --- | --- | --- | --- | --- |
 | `0x11` | volts | `0x31` | `31 21 22 20 24 0a` | 120.4 V |
 | `0x12` | amps | `0x52` | `52 20 20 21 21 0a` | 0.11 A |
-| `0x13` | watts | `0x33` | `33 20 20 26 23 0a` | 6.3 W |
+| `0x13` | watts, under 100 W | `0x33` | `33 20 20 26 23 0a` | 6.3 W |
+| `0x13` | watts, 100 W and up | `0x13` | `13 20 21 28 26 0a` | 186 W |
 | `0x14` | frequency | `0x34` | `34 20 26 20 20 0a` | 60.0 Hz |
 | `0x15` | unknown, constant `0002` | `0x35` | `35 20 20 20 22 0a` | ? |
 | `0x16` | energy | `0x56` | `56 20 20 20 20 0a` | 0.00 kWh |
@@ -140,14 +145,15 @@ kaw.press(kaw.AMP)      # beep, amps screen
 ## Open questions
 
 - What `0x15` is.
-- Header codes for values with zero or three decimals.
+- Header codes for three decimals, or for values past four digits (if any reading
+  needs them).
 - Whether there are multi-byte commands (higher resolution, VA/PF directly,
   calibration). Only single bytes have been tried.
 
 ### Bigger numbers wanted
 
-So far it's only been tested with a ~6 W load, so watts ≥ 1000, kWh ≥ 100 and the clock
-past 99:59 have never been seen. If you log one of those and a column comes out blank or
+So far it's been tested up to ~190 W, so watts ≥ 1000, kWh ≥ 100 and the clock past
+99:59 have never been seen. If you log one of those and a column comes out blank or
 wrong, please open an issue with a few lines of the CSV (the `raw` column is the useful
 part) and what the display showed, and the decoder can be fixed.
 

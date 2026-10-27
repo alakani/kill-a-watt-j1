@@ -113,7 +113,7 @@ def value(cmd, timeout_ms=100):
     if not rep or len(rep) != 5 or not all(0x20 <= b <= 0x29 for b in rep[1:]):
         return None
     digits = [b - 0x20 for b in rep[1:]]
-    places = {0x3: 1, 0x5: 2}.get(rep[0] >> 4)
+    places = {0x1: 0, 0x3: 1, 0x5: 2}.get(rep[0] >> 4)
     if places is None:
         return None
     if cmd == CLOCK:

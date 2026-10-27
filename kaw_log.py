@@ -21,8 +21,8 @@ from serial.tools import list_ports
 PICO_VID = 0x2E8A
 
 # Query -> (name, decoder). Header high nibble gives the decimal places shown on the
-# display: 0x3_ = one, 0x5_ = two (others not seen yet, kept raw).
-DECIMALS = {0x3: 1, 0x5: 2}
+# display: 0x1_ = none, 0x3_ = one, 0x5_ = two (others not seen yet, kept raw).
+DECIMALS = {0x1: 0, 0x3: 1, 0x5: 2}
 QUERIES = [(0x11, "volts"), (0x12, "amps"), (0x13, "watts"), (0x14, "hz"),
            (0x15, "q15"), (0x16, "kwh"), (0x17, "elapsed")]
 COLUMNS = ["time", "volts", "amps", "watts", "va", "pf", "hz", "kwh", "elapsed_min", "q15", "raw"]

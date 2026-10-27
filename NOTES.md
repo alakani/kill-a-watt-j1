@@ -69,7 +69,8 @@ With a small load plugged in (display: 120.4 V, 0.11 A, 6.3 W, 13.1–13.3 VA,
 VA and PF aren't sent; V × A and W / VA reproduce the display.
 
 The header's high nibble lines up with the decimal places: `0x3_` on V, W, Hz, `0x15`
-(one decimal), `0x5_` on A, kWh, clock (two decimals / hh:mm).
+(one decimal), `0x5_` on A, kWh, clock (two decimals / hh:mm). A third code, `0x1_` (no
+decimals), turned up later on the watts past 100 W (section 7).
 
 ## 6. Button commands, one at a time
 
@@ -91,3 +92,19 @@ in 5 s (`probe/open_read.txt`). Before pressing a button there, the load was unp
 case OPEN was an "open-circuit" calibration step waiting to record a zero; with the load
 plugged back in afterwards, readings were the same as before (0.11 A, 6.0 W). Most likely
 OPEN is a link test for a factory fixture.
+
+## 7. Watts past 100 W: header `0x13`
+
+With a bigger load, read once a second, the watts reply changed from `33:0886` (88.6 W)
+to `13:0183`–`13:0186` as the load passed 100 W, while volts (`31:1201`) and amps
+(`52:0221`–`52:0223`) carried on as before. The decoder knew only `0x3_` and `0x5_`, so
+it threw away every watts reply from then on.
+
+`0x1_` is no decimal places: 186 W. The alternative, 18.6 W, would be a power factor of
+0.07 at 120.1 V × 2.23 A = 268 VA; 186 W is 0.69, ordinary for electronics, and it
+carries straight on from the 88 W before it. (Worked out from the other readings, not
+checked against the display.) So the display shows tenths below 100 W and whole watts
+from 100 W (seen up to 186), and the header says which.
+
+Spelled out as bits, `0x1` = `001`, `0x3` = `011`, `0x5` = `101`: bit 0 always set,
+bit 1 for one place, bit 2 for two. A guess from three codes.
