@@ -1,4 +1,6 @@
 *.csv
 LOCAL.md
+Kill_20A_20Watt1453363762061.pdf
+probe/cal_step.sh
 __pycache__/
 .DS_Store

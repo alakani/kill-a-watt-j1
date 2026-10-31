@@ -1,0 +1,246 @@
+=== 00:49:19 send 09
+KAW_SENT=09
+KAW_RX sent=09 n=2
+KAW_RX 090a
+KAW=OK age_s=0 rounds=100 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.3 VA=90.3 PF=0.66 Hz=60.0
+KAW_KWH=5.20 clock=102h
+KAW_RAW 31:1204 52:0075 33:0593 34:0600
+KAW_RAW 35:0002 56:0520 17:0102
+display after 09: oPEn
+=== 00:52:42 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=303 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.8 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.21 clock=102h
+KAW_RAW 31:1204 52:0075 33:0588 34:0600
+KAW_RAW 35:0002 56:0521 17:0102
+display after 02: SAUE (save)
+=== 00:53:34 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=355 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.1 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.21 clock=102h
+KAW_RAW 31:1204 52:0075 33:0591 34:0600
+KAW_RAW 35:0002 56:0521 17:0102
+display after 02: display test, every segment and icon flashing, including breaker, output on, output off
+=== 00:55:35 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=475 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.4 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0075 33:0584 34:0600
+KAW_RAW 35:0002 56:0521 17:0103
+display after 02: 0.2 Watt (matches query 0x15 = 35:0002)
+=== 00:57:12 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=572 misses=0 junk=0
+KAW_AC V=120.4 A=0.76 W=60.0 VA=91.5 PF=0.66 Hz=60.0
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0076 33:0600 34:0600
+KAW_RAW 35:0002 56:0521 17:0103
+display after 02: 1-20 or I-20
+=== 00:57:57 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=616 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.0 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0075 33:0590 34:0600
+KAW_RAW 35:0002 56:0521 17:0103
+display after 02: 1-10 or I-10
+=== 00:58:27 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=647 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.6 VA=90.3 PF=0.66 Hz=60.0
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0075 33:0596 34:0600
+KAW_RAW 35:0002 56:0521 17:0103
+display after 02: I-01
+=== 00:58:51 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=670 misses=0 junk=0
+KAW_AC V=120.4 A=0.76 W=59.6 VA=91.5 PF=0.65 Hz=60.0
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0076 33:0596 34:0600
+KAW_RAW 35:0002 56:0521 17:0103
+display after 02: U220 (V220)
+=== 00:59:22 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=700 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.6 VA=90.3 PF=0.65 Hz=59.9
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0075 33:0586 34:0599
+KAW_RAW 35:0002 56:0521 17:0103
+display after 02: U110
+=== 00:59:46 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=724 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.9 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0075 33:0589 34:0600
+KAW_RAW 35:0002 56:0521 17:0103
+display after 02: oPEn again - the loop is 9 screens
+=== 01:00:39 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=776 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.9 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0075 33:0589 34:0600
+KAW_RAW 35:0002 56:0521 17:0103
+(passing SAUE with the known key)
+=== 01:00:43 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=780 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.2 VA=90.3 PF=0.66 Hz=60.0
+KAW_KWH=5.21 clock=103h
+KAW_RAW 31:1204 52:0075 33:0592 34:0600
+KAW_RAW 35:0002 56:0521 17:0103
+display: test screen confirmed
+=== 01:01:12 send 03
+KAW_SENT=03
+KAW_RX sent=03 n=2
+KAW_RX 030a
+KAW=OK age_s=0 rounds=809 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.0 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0075 33:0590 34:0600
+KAW_RAW 35:0002 56:0522 17:0103
+display after 03 from test screen: SAUE - 03 is down
+=== 01:01:45 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=842 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.9 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0075 33:0589 34:0600
+KAW_RAW 35:0002 56:0522 17:0103
+display: test screen confirmed before 04
+=== 01:02:09 send 04
+KAW_SENT=04
+KAW_RX sent=04 n=2
+KAW_RX 040a
+KAW=OK age_s=0 rounds=865 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.2 VA=90.3 PF=0.66 Hz=60.0
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0075 33:0592 34:0600
+KAW_RAW 35:0002 56:0522 17:0103
+display after 04 from test screen: SAUE (04 is not yet identified; never send it on SAUE)
+=== 01:03:11 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=927 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.5 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0075 33:0585 34:0600
+KAW_RAW 35:0002 56:0522 17:0103
+display after 02 from SAUE (post 04): still SAUE - 02 no longer moves it
+=== 01:04:28 send 03
+KAW_SENT=03
+KAW_RX sent=03 n=2
+KAW_RX 030a
+KAW=OK age_s=0 rounds=1004 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.5 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0075 33:0585 34:0600
+KAW_RAW 35:0002 56:0522 17:0103
+display after 03 from SAUE (post 04): oPEn - menu moving normally again
+=== 01:05:07 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=1043 misses=0 junk=0
+KAW_AC V=120.4 A=0.76 W=60.8 VA=91.5 PF=0.66 Hz=60.0
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0076 33:0608 34:0600
+KAW_RAW 35:0002 56:0522 17:0103
+(passing SAUE with the known key)
+=== 01:05:12 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=1047 misses=0 junk=0
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0076 33:0602 34:0599
+KAW_RAW 35:0002 56:0522 17:0103
+display: test screen confirmed before 05
+=== 01:05:34 send 05
+KAW_SENT=05
+KAW_RX sent=05 n=2
+KAW_RX 050a
+KAW=OK age_s=0 rounds=1069 misses=0 junk=0
+KAW_AC V=120.4 A=0.76 W=61.2 VA=91.5 PF=0.67 Hz=59.9
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0076 33:0612 34:0599
+KAW_RAW 35:0002 56:0522 17:0103
+display after 05 on test screen: beep, no change
+=== 01:06:31 send 02
+KAW_SENT=02
+KAW_RX sent=02 n=2
+KAW_RX 020a
+KAW=OK age_s=0 rounds=1126 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.8 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.22 clock=103h
+KAW_RAW 31:1204 52:0075 33:0588 34:0600
+KAW_RAW 35:0002 56:0522 17:0103
+display after 02: 0.2 Watt confirmed. The load couldn't be unplugged, so 04/05 were not sent here.
+=== 01:14:41 send 03
+KAW_SENT=03
+KAW_RX sent=03 n=2
+KAW_RX 030a
+KAW=OK age_s=0 rounds=1616 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.9 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.23 clock=103h
+KAW_RAW 31:1204 52:0075 33:0589 34:0600
+KAW_RAW 35:0002 56:0523 17:0103
+=== 01:14:46 send 03
+KAW_SENT=03
+KAW_RX sent=03 n=2
+KAW_RX 030a
+KAW=OK age_s=0 rounds=1620 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=58.8 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.23 clock=103h
+KAW_RAW 31:1204 52:0075 33:0588 34:0600
+KAW_RAW 35:0002 56:0523 17:0103
+=== 01:14:50 send 03
+KAW_SENT=03
+KAW_RX sent=03 n=2
+KAW_RX 030a
+KAW=OK age_s=0 rounds=1624 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.0 VA=90.3 PF=0.65 Hz=60.0
+KAW_KWH=5.23 clock=103h
+KAW_RAW 31:1204 52:0075 33:0590 34:0600
+KAW_RAW 35:0002 56:0523 17:0103
+(should be on oPEn: sending the exit key)
+=== 01:14:55 send 01
+KAW_SENT=01
+KAW_RX sent=01 n=2
+KAW_RX 010a
+KAW=OK age_s=0 rounds=1628 misses=0 junk=0
+KAW_AC V=120.4 A=0.75 W=59.2 VA=90.3 PF=0.66 Hz=60.0
+KAW_KWH=5.23 clock=103h
+KAW_RAW 31:1204 52:0075 33:0592 34:0600
+KAW_RAW 35:0002 56:0523 17:0103

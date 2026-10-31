@@ -90,8 +90,8 @@ With someone watching the display (`probe/cmd.py`, `probe/cmd*.txt`):
 In the OPEN state every reading stayed live and correct, and nothing arrived unprompted
 in 5 s (`probe/open_read.txt`). Before pressing a button there, the load was unplugged in
 case OPEN was an "open-circuit" calibration step waiting to record a zero; with the load
-plugged back in afterwards, readings were the same as before (0.11 A, 6.0 W). Most likely
-OPEN is a link test for a factory fixture.
+plugged back in afterwards, readings were the same as before (0.11 A, 6.0 W). I took OPEN
+for a factory link test. That was wrong: see section 9.
 
 ## 7. Watts past 100 W: header `0x13`
 
@@ -108,3 +108,42 @@ from 100 W (seen up to 186), and the header says which.
 
 Spelled out as bits, `0x1` = `001`, `0x3` = `011`, `0x5` = `101`: bit 0 always set,
 bit 1 for one place, bit 2 for two. A guess from three codes.
+
+## 8. The clock past 99:59: header `0x17`
+
+A meter left running passed 100 hours on 30 Oct 2026. The decoder's clock stuck at 99:59,
+rejecting a reply a second, and the raw reply had changed to `17:0102`: the same `0x1_`
+no-decimals header as the watts, digits `0102`, whole hours. 9,868 rejected replies at
+one a second is 2.74 hours past 100, so 102 is right, and the P4400 manual
+says the same: "displayed as Hours:Minutes (from 00:00) and switch to Hours (to 9999)".
+It also says the counters go back to zero at their maximum, and that kWh runs to 9999
+with a shifting decimal, so `0x16` should step from `0x5_` to `0x3_` to `0x1_`.
+
+## 9. `0x09` is calibration mode
+
+Sent one byte at a time with someone reading the display, using a raw send that keeps
+everything the meter says for 0.8 s and any byte that arrives outside a reply
+(`probe/cal_map.txt`). The display's words are as read off the 7-segment LCD.
+
+`0x02` steps through a loop of nine screens, and `0x03` steps back:
+`oPEn`, `SAUE`, every segment flashing, `0.2` Watt, `I-20`, `I-10`, `I-01`, `U220`, `U110`.
+
+- **`0x15` solved.** It reads `35:0002`, which with its one-decimal header is 0.2, and the
+  menu shows 0.2 with the Watt icon. It was the same value on every screen, in and out of
+  this mode. That's why it never followed the load. What the setting does isn't known; a
+  threshold under which the meter treats the load as nothing is a guess.
+- **The display test** lights icons this model has no use for ("breaker", "output on",
+  "output off"), so the firmware looks shared with a model that has a relay.
+- **Reported, not tested here:** that `oPEn` is an open-circuit (no load) calibration, at
+  110 or 220 V, and that a voltage selected without doing `oPEn` first expects 10 A.
+- The keys were expected to be menu, up, down, enter, output, in order. `0x01` left the mode
+  from `oPEn`, `0x02` and `0x03` are up and down. `0x04` and `0x05` were only tried on the
+  display test screen, the one place a stray enter could do no harm: `0x04` went to `SAUE`,
+  after which one `0x02` didn't move it and `0x03` went to `oPEn` as usual; `0x05` beeped and
+  did nothing. So `0x04` may be enter or back, and `0x05` may be either enter or an "output"
+  key for a relay that isn't there.
+- Every key was answered with just its echo, and readings stayed live and unchanged
+  throughout, so nothing here reads calibration values out over the UART.
+
+Selecting a real screen wasn't tried: the load couldn't be removed, and a wrong value with
+no way to power-cycle the meter wasn't worth finding out about. Nothing was saved.

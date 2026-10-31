@@ -16,11 +16,12 @@ RX_PIN = 18
 BAUD = 20174
 
 # Queries: reply is a header byte + 4 digits (each 0x20 + digit).
+# Q15 is the "0.2 Watt" setting in the calibration menu; what it does isn't known.
 VOLTS, AMPS, WATTS, HZ, Q15, KWH, CLOCK = 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17
 # Front-panel buttons: the meter beeps and acts as if the key was pressed;
 # reply is the same byte echoed back.
 VOLT, AMP, WATT_VA, HZ_PF, KWH_HOUR = 0x01, 0x02, 0x03, 0x04, 0x05
-# Shows "OPEN" on the display (measuring carries on); any button press leaves it.
+# Calibration mode, starting at "oPEn". The buttons change meaning in there: see README.md.
 OPEN = 0x09
 
 
@@ -108,7 +109,7 @@ def press(button, timeout_ms=100):
 def value(cmd, timeout_ms=100):
     """A query decoded to a number using the header's decimal places, or None.
 
-    CLOCK comes back as minutes (the display shows hh:mm)."""
+    CLOCK comes back as minutes (the display shows hh:mm, then whole hours past 99:59)."""
     rep = query(cmd, timeout_ms)
     if not rep or len(rep) != 5 or not all(0x20 <= b <= 0x29 for b in rep[1:]):
         return None
@@ -116,9 +117,11 @@ def value(cmd, timeout_ms=100):
     places = {0x1: 0, 0x3: 1, 0x5: 2}.get(rep[0] >> 4)
     if places is None:
         return None
-    if cmd == CLOCK:
-        return (digits[0] * 10 + digits[1]) * 60 + digits[2] * 10 + digits[3]
     n = 0
     for d in digits:
         n = n * 10 + d
+    if cmd == CLOCK:
+        if places == 2:
+            return (digits[0] * 10 + digits[1]) * 60 + digits[2] * 10 + digits[3]
+        return n * 60 if places == 0 else None
     return n / 10 ** places

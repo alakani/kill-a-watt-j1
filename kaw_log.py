@@ -47,10 +47,10 @@ def decode_field(name, text):
     if places is None:
         return None
     if name == "elapsed":
-        # shown as hh:mm in the two-decimal position
+        # hh:mm in the two-decimal position; past 99:59, whole hours with no decimals
         if places == 2:
             return int(digits[:2]) * 60 + int(digits[2:])
-        return None
+        return int(digits) * 60 if places == 0 else None
     return int(digits) / 10 ** places
 
 
